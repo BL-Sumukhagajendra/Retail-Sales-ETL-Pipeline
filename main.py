@@ -1,15 +1,44 @@
-from sqlalchemy import text
+from config.settings import settings
 
-from config.database import engine
+from extract.csv_extractor import CSVExtractor
+from extract.json_extractor import JSONExtractor
+from extract.db_extractor import DatabaseExtractor
+from extract.api_extractor import APIExtractor
 
-try:
-    with engine.connect() as connection:
-        result = connection.execute(text("SELECT version();"))
 
-        print("Database Connected Successfully!\n")
+def main():
 
-        print(result.fetchone()[0])
+    sales_df = CSVExtractor(
+        settings.SALES_FILE
+    ).extract()
 
-except Exception as e:
-    print("Connection Failed")
-    print(e)
+    product_df = JSONExtractor(
+        settings.PRODUCT_JSON
+    ).extract()
+
+    outlet_df = DatabaseExtractor(
+        """
+        SELECT *
+        FROM outlet_manager
+        """
+    ).extract()
+
+    api_df = APIExtractor(
+        settings.API_URL
+    ).extract()
+
+    print("\nSales")
+    print(sales_df.head())
+
+    print("\nProducts")
+    print(product_df.head())
+
+    print("\nOutlet Managers")
+    print(outlet_df.head())
+
+    print("\nAPI Products")
+    print(api_df.head())
+
+
+if __name__ == "__main__":
+    main()

@@ -7,7 +7,10 @@ class Settings(BaseSettings):
     DB_NAME: str
     DB_USER: str
     DB_PASSWORD: str
-
+    SALES_FILE: str
+    PRODUCT_JSON: str
+    API_URL: str
+    
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore"

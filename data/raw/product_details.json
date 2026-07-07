@@ -1,0 +1,26 @@
+[
+  {
+    "Item_Identifier": "FDA15",
+    "Manufacturer": "Nestle",
+    "Shelf_Life": 365,
+    "Storage_Type": "Cold"
+  },
+  {
+    "Item_Identifier": "DRC01",
+    "Manufacturer": "Pepsi",
+    "Shelf_Life": 180,
+    "Storage_Type": "Normal"
+  },
+  {
+    "Item_Identifier": "FDN15",
+    "Manufacturer": "Britannia",
+    "Shelf_Life": 270,
+    "Storage_Type": "Cold"
+  },
+  {
+    "Item_Identifier": "FDX07",
+    "Manufacturer": "Amul",
+    "Shelf_Life": 120,
+    "Storage_Type": "Frozen"
+  }
+]
